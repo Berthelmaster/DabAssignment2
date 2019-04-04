@@ -8,6 +8,13 @@ namespace ConsoleApp10
 {
     public class CourseEnrolledStudents
     {
+        
+
+
+
+
+        public DateTime EnrolledDate { get; set; }
+        public DateTime GraduationDate { get; set; }
 
     }
 }

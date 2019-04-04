@@ -13,12 +13,18 @@ namespace ConsoleApp10
 
         }
 
+        // Many students have one Group
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Students>()
-                .HasOne(ba => ba.Group)
+                .HasOne(ba => ba.Group_id)
                 .WithMany(b => b._Students)
                 .IsRequired();
         }
+
+
+
+
+
     }
 }

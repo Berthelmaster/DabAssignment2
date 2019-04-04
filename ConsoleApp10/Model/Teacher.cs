@@ -12,5 +12,7 @@ namespace ConsoleApp10
         public int AU_ID { get; set; }
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
+
+        public list <Assignment> Assignments
     }
 }
