@@ -13,6 +13,6 @@ namespace ConsoleApp10
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
         public Group Group_id { get; set; }
-        public List<Course> Courses { get; set; }
+        public List<CourseEnrolledStudents> CourseEnrolledStudents { get; set; }
     }
 }

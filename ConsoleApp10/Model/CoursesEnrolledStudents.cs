@@ -8,10 +8,8 @@ namespace ConsoleApp10
 {
     public class CourseEnrolledStudents
     {
-        [Key]
         public int Course_id { get; set; }
         public Course _Course { get; set; }
-        [Key]
         public int AU_id { get; set; }
         public Students _Students { get; set; }
         public DateTime EnrolledDate { get; set; }

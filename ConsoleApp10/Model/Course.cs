@@ -13,7 +13,7 @@ namespace ConsoleApp10
         public bool Status { get; set; }
 
 
-        public List<Students> _Students { get; set; }
+        public List<CourseEnrolledStudents> CourseEnrolledStudents { get; set; }
 
     }
 }

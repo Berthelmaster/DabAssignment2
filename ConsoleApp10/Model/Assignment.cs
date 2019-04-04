@@ -14,5 +14,6 @@ namespace ConsoleApp10
         public int Grades { get; set; } 
 
         public Teacher Teacher { get; set; }
+        public AssistantTeacher AssistentTeacher{ get; set; }
     }
 }

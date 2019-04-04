@@ -13,23 +13,43 @@ namespace ConsoleApp10
 
         }
 
-        // Many students have one Group
+        public DbSet<Assignment> Assignments { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            // Many students have one Group
             modelBuilder.Entity<Students>()
                 .HasOne(ba => ba.Group_id)
                 .WithMany(b => b._Students)
                 .IsRequired();
-        }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Assignments>()
-                .HasOne(ba => ba.Group_id)
-                .WithMany(b => b._Students)
-                .IsRequired();
-        }
+            // Many students have Many Courses through CourseEnrolledmentStudent
+            modelBuilder.Entity<CourseEnrolledStudents>()
+                .HasKey(bw => new {bw.AU_id, bw.Course_id});
+            modelBuilder.Entity<CourseEnrolledStudents>()
+                .HasOne(ba => ba._Students)
+                .WithMany(b => b.CourseEnrolledStudents)
+                .HasForeignKey(bc => bc.AU_id);
 
+                modelBuilder.Entity<CourseEnrolledStudents>()
+                    .HasOne(bc => bc._Course)
+                    .WithMany(b => b.CourseEnrolledStudents)
+                    .HasForeignKey(bc => bc.Course_id);
+                
+
+
+
+             //one teacher many assignment 
+             modelBuilder.Entity<Assignment>()
+                .HasOne(p => p.Teacher)
+                .WithMany(b => b.Assignments);
+             //one AssistentTeacher many Assignment
+             modelBuilder.Entity<Assignment>()
+                .HasOne(p => p.AssistentTeacher)
+                .WithMany(b => b.Assignments_);
+
+        }
 
 
     }

@@ -13,6 +13,6 @@ namespace ConsoleApp10
         public string Name { get; set; }
         public DateTime Birthday { get; set; }
 
-
+        public List<Assignment> Assignments_ { get; set; }
     }
 }
