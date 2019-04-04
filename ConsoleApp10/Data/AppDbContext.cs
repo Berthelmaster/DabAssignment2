@@ -22,7 +22,13 @@ namespace ConsoleApp10
                 .IsRequired();
         }
 
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Assignments>()
+                .HasOne(ba => ba.Group_id)
+                .WithMany(b => b._Students)
+                .IsRequired();
+        }
 
 
 

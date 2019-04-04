@@ -13,6 +13,6 @@ namespace ConsoleApp10
         public DateTime HandInDate { get; set; }
         public int Grades { get; set; } 
 
-        public Teacher 
+        public Teacher Teacher { get; set; }
     }
 }
