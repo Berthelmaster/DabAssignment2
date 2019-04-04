@@ -38,8 +38,6 @@ namespace ConsoleApp10
                     .HasForeignKey(bc => bc.Course_id);
                 
 
-
-
              //one teacher many assignment 
              modelBuilder.Entity<Assignment>()
                 .HasOne(p => p.Teacher)
