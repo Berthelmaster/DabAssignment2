@@ -8,6 +8,8 @@ namespace ConsoleApp10
 {
     public class Video
     {
+        [Key]
+        public int Video_id { get; set; }
 
     }
 }

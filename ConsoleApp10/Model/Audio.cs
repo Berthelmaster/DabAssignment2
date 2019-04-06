@@ -8,6 +8,8 @@ namespace ConsoleApp10
 {
     public class Audio
     {
+        [Key]
+        public int Audio_id { get; set; }
 
     }
 }

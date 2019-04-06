@@ -11,8 +11,6 @@ namespace ConsoleApp10
         [Key]
         public int Course_id { get; set; }
         public bool Status { get; set; }
-
-
         public List<CourseEnrolledStudents> CourseEnrolledStudents { get; set; }
 
     }

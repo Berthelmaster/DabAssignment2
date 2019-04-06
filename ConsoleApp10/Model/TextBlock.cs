@@ -8,6 +8,8 @@ namespace ConsoleApp10
 {
     public class TextBlock
     {
+        [Key]
+        public int TextBlock_id { get; set; }
 
     }
 }

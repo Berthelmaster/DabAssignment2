@@ -8,6 +8,7 @@ namespace ConsoleApp10
 {
     public class GroupSignUpLink
     {
-
+        [Key]
+        public int GSUL_id { get;set; }
     }
 }
