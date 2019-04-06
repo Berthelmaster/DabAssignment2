@@ -15,6 +15,7 @@ namespace ConsoleApp10
 
 
         //Dbsets for when we have to use the Data in any way. Also this will be used for seeding data into our Database
+        // These also hold the shadow classes, I'm not sure, should these also be added?
         public DbSet<Assignment> Assignment { get; set; }
         public DbSet<Audio> Audios { get; set; }
         public DbSet<Calendar> Calendar { get; set; }
@@ -26,6 +27,16 @@ namespace ConsoleApp10
         public  DbSet<Teacher> Teacher { get; set; }
         public DbSet<TextBlock> TextBlock { get; set; }
         public DbSet<Video> Video { get; set; }
+        public DbSet<AssistantTeacher> AssistantTeacher { get; set; }
+        public DbSet<ContentArea> ContentArea { get; set; }
+        public DbSet<ContentFolder> ContentFolder { get; set; }
+        public DbSet<CourseAssignment> CourseAssignment { get; set; }
+        public DbSet<CourseContent> CourseContents { get; set; }
+        public DbSet<CourseGroup> CourseGroup { get; set; }
+        public DbSet<CourseEnrolledStudents> CourseEnrolledStudents { get; set; }
+        public DbSet<CourseTeacher> CourseTeacher { get; set; }
+        public DbSet<GroupAssignment> GroupAssignment { get; set; }
+
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

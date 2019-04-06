@@ -9,9 +9,10 @@ namespace ConsoleApp10
     public class Calendar
     {
         [Key]
-        public int AU_id { get; set; }
-        public string Name { get; set; }
-        public DateTime Birthday { get; set; }
+        public int Calendar_id { get; set; }
+        public DateTime CourseLecture{ get; set; }
+        public DateTime Handin { get; set; }
+        public DateTime Deadlines { get; set; }
         public List<Course> Courses { get; set; }
        
 

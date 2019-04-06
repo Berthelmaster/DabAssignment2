@@ -24,6 +24,8 @@ namespace ConsoleApp10
                 
             }
 
+            while (true) ;
+
             Console.ReadLine();
         }
     }
