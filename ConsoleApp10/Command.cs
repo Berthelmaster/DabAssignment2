@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ConsoleApp10
 {
-    public class Command
+    public static class Command
     {
-        public async void ListStudents()
+        public static async void ListStudents()
         {
             using (var db = new AppDbContext())
             {
-                var students = await db.Studentss.ToListAsync();
+                var students = await db.Students.ToListAsync();
                 Console.WriteLine("All Student List: \n");
                 foreach (var student in students)
                 {
@@ -20,11 +20,11 @@ namespace ConsoleApp10
             }
         }
 
-        public async void ListCourses()
+        public static async void ListCourses()
         {
             using (var db = new AppDbContext())
             {
-                var Courses = await db.Courses.ToListAsync();
+                var Courses = await db.Course.ToListAsync();
                 Console.WriteLine("List of Courses: \n");
                 foreach (var course in Courses)
                 {

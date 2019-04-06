@@ -15,17 +15,17 @@ namespace ConsoleApp10
 
 
         //Dbsets for when we have to use the Data in any way. Also this will be used for seeding data into our Database
-        public DbSet<Assignment> Assignments { get; set; }
+        public DbSet<Assignment> Assignment { get; set; }
         public DbSet<Audio> Audios { get; set; }
-        public DbSet<Calendar> Calendars { get; set; }
-        public DbSet<Content> Contents { get; set; }
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<Group> Groups { get; set; }
-        public DbSet<GroupSignUpLink> GroupSignUpLinks { get; set; }
-        public DbSet<Students> Studentss { get; set; }
-        public  DbSet<Teacher> Teachers { get; set; }
-        public DbSet<TextBlock> TextBlocks { get; set; }
-        public DbSet<Video> Videos { get; set; }
+        public DbSet<Calendar> Calendar { get; set; }
+        public DbSet<Content> Content { get; set; }
+        public DbSet<Course> Course { get; set; }
+        public DbSet<Group> Group { get; set; }
+        public DbSet<GroupSignUpLink> GroupSignUpLink { get; set; }
+        public DbSet<Students> Students { get; set; }
+        public  DbSet<Teacher> Teacher { get; set; }
+        public DbSet<TextBlock> TextBlock { get; set; }
+        public DbSet<Video> Video { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
