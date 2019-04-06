@@ -9,5 +9,9 @@ namespace ConsoleApp10
     public class CourseContent
     {
 
+        public int Course_id { get; set; }
+        public Course Course { get; set; }
+        public int Content_id { get; set; }
+        public Content Content { get; set; }
     }
 }

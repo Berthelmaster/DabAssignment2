@@ -45,7 +45,17 @@ namespace ConsoleApp10
                 .HasForeignKey(bc => bc.Calendar_id)
                 .IsRequired();
 
-
+            // Many Courses have Many Content (Wow that doesn't sound very good)
+            modelBuilder.Entity<CourseContent>()
+                .HasKey(bc => new {bc.Course_id, bc.Content_id});
+            modelBuilder.Entity<CourseContent>()
+                .HasOne(bc => bc.Course)
+                .WithMany(b => b.CourseContents)
+                .HasForeignKey(ba => ba.Course_id);
+            modelBuilder.Entity<CourseContent>()
+                .HasOne(ba => ba.Content)
+                .WithMany(b => b.CourseContents)
+                .HasForeignKey(b => b.Content_id);
            
 
               

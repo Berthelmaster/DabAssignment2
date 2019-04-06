@@ -10,7 +10,7 @@ namespace ConsoleApp10
     {
         [Key]
         public int Content_Id { get; set; }
-        
+        public List<CourseContent> CourseContents { get; set; }
 
     }
 }

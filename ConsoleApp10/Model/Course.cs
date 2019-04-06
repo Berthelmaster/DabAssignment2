@@ -14,6 +14,7 @@ namespace ConsoleApp10
         public List<CourseEnrolledStudents> CourseEnrolledStudents { get; set; }
         public int Calendar_id { get; set; }
         public Calendar Calendar { get; set; }
+        public List<CourseContent> CourseContents { get; set; }
 
     }
 }
