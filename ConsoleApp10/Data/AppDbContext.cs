@@ -92,7 +92,17 @@ namespace ConsoleApp10
                 .WithMany(bc => bc.CourseAssignments)
                 .HasForeignKey(b => b.Assignment_id);
 
-
+            //Many Courses have many groups
+            modelBuilder.Entity<CourseGroup>()
+                .HasKey(bc => new {bc.Course_id, bc.Group_id});
+            modelBuilder.Entity<CourseGroup>()
+                .HasOne(b => b.Course)
+                .WithMany(ba => ba.CourseGroups)
+                .HasForeignKey(bc => bc.Course_id);
+            modelBuilder.Entity<CourseGroup>()
+                .HasOne(b => b.Group)
+                .WithMany(bl => bl.CourseGroups)
+                .HasForeignKey(bf => bf.Group_id);
            
 
               

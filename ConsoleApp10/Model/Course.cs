@@ -16,5 +16,6 @@ namespace ConsoleApp10
         public Calendar Calendar { get; set; }
         public List<CourseContent> CourseContents { get; set; }
         public List<CourseAssignment> CourseAssignments { get; set; }
+        public List <CourseGroup> CourseGroups { get; set; }
     }
 }

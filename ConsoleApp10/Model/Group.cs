@@ -14,6 +14,7 @@ namespace ConsoleApp10
         public uint GroupSize{ get; set; }
 
         public List<Students> _Students { get; set; }
-
+        public List<CourseGroup> CourseGroups { get; set; }
+        
     }
 }
