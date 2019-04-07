@@ -79,6 +79,20 @@ namespace ConsoleApp10
                 .HasOne(ba => ba.Content)
                 .WithMany(b => b.CourseContents)
                 .HasForeignKey(b => b.Content_id);
+
+            // Many Courses have many Assignments
+            modelBuilder.Entity<CourseAssignment>()
+                .HasKey(bc => new {bc.Course_id, bc.Assignment_id});
+            modelBuilder.Entity<CourseAssignment>()
+                .HasOne(b => b.Course)
+                .WithMany(ba => ba.CourseAssignments)
+                .HasForeignKey(bf => bf.Course_id);
+            modelBuilder.Entity<CourseAssignment>()
+                .HasOne(ba => ba.Assignment)
+                .WithMany(bc => bc.CourseAssignments)
+                .HasForeignKey(b => b.Assignment_id);
+
+
            
 
               

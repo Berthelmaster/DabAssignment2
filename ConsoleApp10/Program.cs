@@ -19,14 +19,13 @@ namespace ConsoleApp10
                 case "2":
                     Command.ListCourses();
                     Console.WriteLine("What do you want to do next? \n");
-                    var coursechoice = Console.ReadLine();
                     break;
                 
             }
 
-            while (true) ;
-
+            //while (true) ;
             Console.ReadLine();
+
         }
     }
 }

@@ -8,6 +8,7 @@ namespace ConsoleApp10
 {
     public class ContentFolder
     {
+        [Key]
         public int Folder_id { get; set; }
 
         [ForeignKey("Content")]
