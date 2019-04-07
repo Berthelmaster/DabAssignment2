@@ -14,5 +14,7 @@ namespace ConsoleApp10
         [ForeignKey("Content")]
         public int Content_id { get; set; }
         public Content Content { get; set; }
+
+        public List<ContentArea> ContentAreas { get; set; }
     }
 }

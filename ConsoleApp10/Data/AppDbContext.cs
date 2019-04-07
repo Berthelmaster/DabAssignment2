@@ -104,9 +104,6 @@ namespace ConsoleApp10
                 .WithMany(bl => bl.CourseGroups)
                 .HasForeignKey(bf => bf.Group_id);
            
-
-              
-
              //one teacher many assignment 
              modelBuilder.Entity<Assignment>()
                 .HasOne(p => p.Teacher)
@@ -116,6 +113,34 @@ namespace ConsoleApp10
                 .HasOne(p => p.AssistentTeacher)
                 .WithMany(b => b.Assignments_);
 
+             // Multiple Content areas to one content
+             modelBuilder.Entity<ContentArea>()
+                 .HasOne(c => c.Content)
+                 .WithMany(ca => ca.ContentAreas);
+
+             // Multiple Content folders to one content
+             modelBuilder.Entity<ContentFolder>()
+                 .HasOne(c => c.Content)
+                 .WithMany(cf => cf.ContentFolders);
+
+             // Multiple Content areas to one Content folder
+             modelBuilder.Entity<ContentArea>()
+                 .HasOne(cf => cf.Folder)
+                 .WithMany(ca => ca.ContentAreas);
+
+             // Multiple sub elements to one Content area
+             modelBuilder.Entity<ContentArea>()
+                 .HasMany(v => v.Videos)
+                 .WithOne(ca => ca.ContentArea_Id);
+             modelBuilder.Entity<ContentArea>()
+                 .HasMany(gsul => gsul.GroupSignUpLinks)
+                 .WithOne(ca => ca.ContentArea_Id);
+             modelBuilder.Entity<ContentArea>()
+                 .HasMany(tb => tb.TextBlocks)
+                 .WithOne(ca => ca.ContentArea_Id);
+             modelBuilder.Entity<ContentArea>()
+                 .HasMany(a => a.Audios)
+                 .WithOne(ca => ca.ContentArea_Id);
         }
 
 
