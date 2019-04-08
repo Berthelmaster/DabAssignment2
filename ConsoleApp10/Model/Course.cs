@@ -17,5 +17,6 @@ namespace ConsoleApp10
         public List<CourseContent> CourseContents { get; set; }
         public List<CourseAssignment> CourseAssignments { get; set; }
         public List <CourseGroup> CourseGroups { get; set; }
+        public List<CourseTeacher> CourseTeachers { get; set; }
     }
 }

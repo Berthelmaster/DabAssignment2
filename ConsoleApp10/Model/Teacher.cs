@@ -14,5 +14,6 @@ namespace ConsoleApp10
         public DateTime Birthday { get; set; }
 
         public List<Assignment> Assignments { get; set; }
+        public List<CourseTeacher> CourseTeachers { get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace ConsoleApp10
         public DbSet<CourseGroup> CourseGroup { get; set; }
         public DbSet<CourseEnrolledStudents> CourseEnrolledStudents { get; set; }
         public DbSet<CourseTeacher> CourseTeacher { get; set; }
-        public DbSet<GroupAssignment> GroupAssignment { get; set; }
+        //public DbSet<GroupAssignment> GroupAssignment { get; set; }
 
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -141,6 +141,18 @@ namespace ConsoleApp10
              modelBuilder.Entity<ContentArea>()
                  .HasMany(a => a.Audios)
                  .WithOne(ca => ca.ContentArea_Id);
+
+             //Many Courses have many teachers
+             modelBuilder.Entity<CourseTeacher>()
+                 .HasKey(ct => new { ct.Course_id, ct.AU_id});
+             modelBuilder.Entity<CourseTeacher>()
+                 .HasOne(c => c.Course)
+                 .WithMany( ct=> ct.CourseTeachers)
+                 .HasForeignKey(bc => bc.Course_id);
+             modelBuilder.Entity<CourseTeacher>()
+                 .HasOne(t => t.Teacher)
+                 .WithMany(ct => ct.CourseTeachers)
+                 .HasForeignKey(ct => ct.AU_id);
         }
 
 

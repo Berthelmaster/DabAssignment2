@@ -4,14 +4,16 @@ using ConsoleApp10;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ConsoleApp10.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190408083631_AddedStuffWithContentAndDownwards")]
+    partial class AddedStuffWithContentAndDownwards
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -207,19 +209,6 @@ namespace ConsoleApp10.Migrations
                     b.ToTable("CourseGroup");
                 });
 
-            modelBuilder.Entity("ConsoleApp10.CourseTeacher", b =>
-                {
-                    b.Property<int>("Course_id");
-
-                    b.Property<int>("AU_id");
-
-                    b.HasKey("Course_id", "AU_id");
-
-                    b.HasIndex("AU_id");
-
-                    b.ToTable("CourseTeacher");
-                });
-
             modelBuilder.Entity("ConsoleApp10.Group", b =>
                 {
                     b.Property<int>("GroupID")
@@ -409,19 +398,6 @@ namespace ConsoleApp10.Migrations
                     b.HasOne("ConsoleApp10.Group", "Group")
                         .WithMany("CourseGroups")
                         .HasForeignKey("Group_id")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("ConsoleApp10.CourseTeacher", b =>
-                {
-                    b.HasOne("ConsoleApp10.Teacher", "Teacher")
-                        .WithMany("CourseTeachers")
-                        .HasForeignKey("AU_id")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ConsoleApp10.Course", "Course")
-                        .WithMany("CourseTeachers")
-                        .HasForeignKey("Course_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
