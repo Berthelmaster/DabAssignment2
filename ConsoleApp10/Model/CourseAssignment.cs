@@ -10,8 +10,8 @@ namespace ConsoleApp10
     {
         public int Course_id { get; set; }
         public int Assignment_id { get; set; }
-        public Course Course;
-        public Assignment Assignment;
+        public Course Course { get; set; }
+        public Assignment Assignment { get; set; }
 
     }
 }
