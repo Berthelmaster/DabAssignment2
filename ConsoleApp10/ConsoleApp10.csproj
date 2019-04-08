@@ -8,6 +8,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20190406101753_initMigration.cs" />
     <Compile Remove="Migrations\20190408083519_AddedStuffWithContentAndDownwards.cs" />
+    <Compile Remove="Migrations\20190408094216_FullyDone.cs" />
+    <Compile Remove="Migrations\20190408105543_RemovedContentFolder.cs" />
   </ItemGroup>
 
   <ItemGroup>

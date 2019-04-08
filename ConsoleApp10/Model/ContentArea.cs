@@ -14,9 +14,6 @@ namespace ConsoleApp10
         public int Content_Id { get; set; }
         public Content Content { get; set; }
 
-        public int ContentFolder_Id { get; set; }
-        public ContentFolder ContentFolder { get; set; }
-
         public List<GroupSignUpLink> GroupSignUpLinks { get; set; }
 
         public List<Video> Videos { get; set; }

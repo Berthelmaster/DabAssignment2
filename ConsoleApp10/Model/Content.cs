@@ -16,6 +16,6 @@ namespace ConsoleApp10
 
         public List<ContentArea> ContentAreas { get; set; }
 
-        public List<ContentFolder> ContentFolders { get; set; }
+        //public List<ContentFolder> ContentFolders { get; set; }
     }
 }

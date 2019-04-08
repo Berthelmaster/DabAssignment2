@@ -28,7 +28,7 @@ namespace ConsoleApp10
         public DbSet<Video> Video { get; set; }
         public DbSet<AssistantTeacher> AssistantTeacher { get; set; }
         public DbSet<ContentArea> ContentArea { get; set; }
-        public DbSet<ContentFolder> ContentFolder { get; set; }
+        //public DbSet<ContentFolder> ContentFolder { get; set; }
         public DbSet<CourseAssignment> CourseAssignment { get; set; }
         public DbSet<CourseContent> CourseContents { get; set; }
         public DbSet<CourseGroup> CourseGroup { get; set; }
@@ -118,19 +118,19 @@ namespace ConsoleApp10
              // Multiple Content areas to one content
              modelBuilder.Entity<ContentArea>()
                  .HasOne(c => c.Content)
-                 .WithMany(ca => ca.ContentAreas)
-                 .HasForeignKey(ca => ca.ContentFolder_Id);
+                 .WithMany(ca => ca.ContentAreas);
+                 //.HasForeignKey(ca => ca.ContentFolder_Id);
 
              // Multiple Content folders to one content
-             modelBuilder.Entity<ContentFolder>()
-                 .HasOne(c => c.Content)
-                 .WithMany(cf => cf.ContentFolders)
-                 .HasForeignKey(cf => cf.Content_id);
+             //modelBuilder.Entity<ContentFolder>()
+             //    .HasOne(c => c.Content)
+             //    .WithMany(cf => cf.ContentFolders)
+             //    .HasForeignKey(cf => cf.Content_id);
 
              // Multiple Content areas to one Content folder
-             modelBuilder.Entity<ContentArea>()
-                 .HasOne(cf => cf.ContentFolder)
-                 .WithMany(ca => ca.ContentAreas);
+             //modelBuilder.Entity<ContentArea>()
+             //    .HasOne(cf => cf.ContentFolder)
+             //    .WithMany(ca => ca.ContentAreas);
 
              //// Multiple sub elements to one Content area
              //modelBuilder.Entity<ContentArea>()

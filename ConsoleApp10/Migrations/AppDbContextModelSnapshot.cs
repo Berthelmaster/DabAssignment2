@@ -110,13 +110,11 @@ namespace ConsoleApp10.Migrations
 
                     b.Property<int>("Folder_Id");
 
-                    b.Property<int?>("Folder_id");
-
                     b.HasKey("Area_Id");
 
-                    b.HasIndex("Folder_Id");
+                    b.HasIndex("Content_Id");
 
-                    b.HasIndex("Folder_id");
+                    b.HasIndex("Folder_Id");
 
                     b.ToTable("ContentArea");
                 });
@@ -350,12 +348,13 @@ namespace ConsoleApp10.Migrations
                 {
                     b.HasOne("ConsoleApp10.Content", "Content")
                         .WithMany("ContentAreas")
-                        .HasForeignKey("Folder_Id")
+                        .HasForeignKey("Content_Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ConsoleApp10.ContentFolder", "Folder")
                         .WithMany("ContentAreas")
-                        .HasForeignKey("Folder_id");
+                        .HasForeignKey("Folder_Id")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ConsoleApp10.ContentFolder", b =>
