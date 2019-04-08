@@ -68,5 +68,36 @@ namespace ConsoleApp10
             }
         }
 
+        public static async void ListCourseContent(int courseId)
+        {
+            using (var db = new AppDbContext())
+            {
+                var courseContents = await db.CourseContents.Where(c => c.Course_id == courseId).ToListAsync();
+                Console.WriteLine("List of content to course: \n");
+                foreach (var courseContent in courseContents)
+                {
+                    Console.WriteLine("Course content: {0}", courseContent.Content.Content_Id);
+                }
+            }
+        }
+
+        public static async void ListStudentAssignments(int studentId,int courseId)
+        {
+            using (var db = new AppDbContext())
+            {
+                var studentsAssignments = await db.CourseEnrolledStudents.Where(c => c.Course_id == courseId && c.AU_id == courseId).ToListAsync();
+                Console.WriteLine("List of content to course: \n");
+                foreach (var student in studentsAssignments)
+                {
+                    foreach (var assignment in student._Course.CourseAssignments)
+                    {
+                        Console.WriteLine("Assignment id: {0}", assignment.Assignment.Assignment_Id);
+                        Console.WriteLine("Grade: {0}", assignment.Assignment.Grades);
+                        Console.WriteLine("Graded by: {0} \n", assignment.Assignment.Teacher.Name);
+                    }
+                    
+                }
+            }
+        }
     }
 }
