@@ -7,7 +7,7 @@ namespace ConsoleApp10
         static void Main(string[] args)
         {
             Console.WriteLine("Hello! You have the following Options: \n" +
-                              "Press 1 to List all students \n" + "Press 2 to list all Courses \n" + "Press 3 to Search for student using AU_ID \n" + "Press 4 to list student and teachers assigned to a give Course \n");
+                              "Press 1 to List all students \n" + "Press 2 to list all Courses \n" + "Press 3 to Search for student using AU_ID \n" + "Press 4 to list student and teachers assigned to a give Course \n" + "Press 5\n" + "Press 6\n");
             var choice = Console.ReadLine();
 
             switch (choice)
@@ -27,10 +27,19 @@ namespace ConsoleApp10
                     break;
                 case "4":
                     Console.WriteLine("Write Course_Id: ");
-                    var CourseID = Convert.ToInt32(Console.ReadLine());
-                    Command.ListStudentsAndTeachers(CourseID);
+                    var courseID = Convert.ToInt32(Console.ReadLine());
+                    Command.ListAssignedToCourse(courseID);
                     break;
                 case "5":
+                    Console.WriteLine("Write Course_Id");
+                    var _courseID = Convert.ToInt32(Console.ReadLine());
+                    Command.ListCourseContent(_courseID);
+                    break;
+                case "6":
+                    Console.WriteLine("Write student AU_Id & course_Id");
+                    var _studentID = Convert.ToInt32(Console.ReadLine());
+                    var studentcourseID = Convert.ToInt32(Console.ReadLine());
+                    Command.ListStudentAssignment(_studentID, studentcourseID);
                     break;
                 
             }
