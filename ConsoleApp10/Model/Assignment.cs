@@ -19,5 +19,6 @@ namespace ConsoleApp10
         public int AU_Id_Assistant { get; set; }
         public List<CourseAssignment> CourseAssignments { get; set; }
         public List<GroupAssignment> GroupAssignment { get; set; }
+        
     }
 }
