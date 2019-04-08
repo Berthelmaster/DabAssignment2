@@ -9,7 +9,7 @@ namespace ConsoleApp10
     {
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            builder.UseSqlServer(@"Server=Localhost;Database=DabAssignment;Integrated Security=True");
+            builder.UseSqlServer(@"Server=Localhost;Database=DabAssignmentV2;Integrated Security=True");
         }
 
 
@@ -113,7 +113,7 @@ namespace ConsoleApp10
             modelBuilder.Entity<Assignment>()
                .HasOne(p => p.AssistentTeacher)
                .WithMany(b => b.Assignments_)
-               .HasForeignKey(b => b.AU_Id);
+               .HasForeignKey(b => b.AU_Id_Assistant);
 
              // Multiple Content areas to one content
              modelBuilder.Entity<ContentArea>()

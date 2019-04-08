@@ -25,19 +25,19 @@ namespace ConsoleApp10.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AssistentTeacherAU_ID");
+                    b.Property<int>("AU_ID");
+
+                    b.Property<int>("AU_Id_Assistant");
 
                     b.Property<int>("Grades");
 
                     b.Property<DateTime>("HandInDate");
 
-                    b.Property<int?>("TeacherAU_ID");
-
                     b.HasKey("Assignment_Id");
 
-                    b.HasIndex("AssistentTeacherAU_ID");
+                    b.HasIndex("AU_ID");
 
-                    b.HasIndex("TeacherAU_ID");
+                    b.HasIndex("AU_Id_Assistant");
 
                     b.ToTable("Assignment");
                 });
@@ -108,30 +108,11 @@ namespace ConsoleApp10.Migrations
 
                     b.Property<int>("Content_Id");
 
-                    b.Property<int>("Folder_Id");
-
                     b.HasKey("Area_Id");
 
                     b.HasIndex("Content_Id");
 
-                    b.HasIndex("Folder_Id");
-
                     b.ToTable("ContentArea");
-                });
-
-            modelBuilder.Entity("ConsoleApp10.ContentFolder", b =>
-                {
-                    b.Property<int>("Folder_id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Content_id");
-
-                    b.HasKey("Folder_id");
-
-                    b.HasIndex("Content_id");
-
-                    b.ToTable("ContentFolder");
                 });
 
             modelBuilder.Entity("ConsoleApp10.Course", b =>
@@ -327,13 +308,15 @@ namespace ConsoleApp10.Migrations
 
             modelBuilder.Entity("ConsoleApp10.Assignment", b =>
                 {
-                    b.HasOne("ConsoleApp10.AssistantTeacher", "AssistentTeacher")
-                        .WithMany("Assignments_")
-                        .HasForeignKey("AssistentTeacherAU_ID");
-
                     b.HasOne("ConsoleApp10.Teacher", "Teacher")
                         .WithMany("Assignments")
-                        .HasForeignKey("TeacherAU_ID");
+                        .HasForeignKey("AU_ID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("ConsoleApp10.AssistantTeacher", "AssistentTeacher")
+                        .WithMany("Assignments_")
+                        .HasForeignKey("AU_Id_Assistant")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ConsoleApp10.Audio", b =>
@@ -349,19 +332,6 @@ namespace ConsoleApp10.Migrations
                     b.HasOne("ConsoleApp10.Content", "Content")
                         .WithMany("ContentAreas")
                         .HasForeignKey("Content_Id")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ConsoleApp10.ContentFolder", "Folder")
-                        .WithMany("ContentAreas")
-                        .HasForeignKey("Folder_Id")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("ConsoleApp10.ContentFolder", b =>
-                {
-                    b.HasOne("ConsoleApp10.Content", "Content")
-                        .WithMany("ContentFolders")
-                        .HasForeignKey("Content_id")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
