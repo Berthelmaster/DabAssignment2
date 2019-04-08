@@ -144,14 +144,17 @@ namespace ConsoleApp10
 
             // many to many GroupAssignment, many groups many assignments
             modelBuilder.Entity<GroupAssignment>()
+                .HasKey(ga => new { ga.Assignment_ID, ga.GroupID });
+            modelBuilder.Entity<GroupAssignment>()
                 .HasOne(p => p.Group)
-                .WithMany(p => p.GroupAssignment);
+                .WithMany(p => p.GroupAssignment)
+                .HasForeignKey(ga => ga.GroupID);
             modelBuilder.Entity<GroupAssignment>()
                 .HasOne(a => a.Assignment)
-                .WithMany(a => a.GroupAssignment);
-
-             //Many Courses have many teachers
-             modelBuilder.Entity<CourseTeacher>()
+                .WithMany(a => a.GroupAssignment)
+                .HasForeignKey(ga => ga.Assignment_ID);
+            //Many Courses have many teachers
+            modelBuilder.Entity<CourseTeacher>()
                  .HasKey(ct => new { ct.Course_id, ct.AU_id});
              modelBuilder.Entity<CourseTeacher>()
                  .HasOne(c => c.Course)
