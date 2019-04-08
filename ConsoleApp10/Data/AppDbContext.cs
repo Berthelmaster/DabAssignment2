@@ -102,15 +102,18 @@ namespace ConsoleApp10
                 .HasOne(b => b.Group)
                 .WithMany(bl => bl.CourseGroups)
                 .HasForeignKey(bf => bf.Group_id);
-           
-             //one teacher many assignment 
-             modelBuilder.Entity<Assignment>()
-                .HasOne(p => p.Teacher)
-                .WithMany(b => b.Assignments);
-             //one AssistentTeacher many Assignment
-             modelBuilder.Entity<Assignment>()
-                .HasOne(p => p.AssistentTeacher)
-                .WithMany(b => b.Assignments_);
+
+            //one teacher many assignment 
+            modelBuilder.Entity<Assignment>()
+               .HasOne(p => p.Teacher)
+               .WithMany(b => b.Assignments)
+               .HasForeignKey(b => b.Assignment_Id);
+
+            //one AssistentTeacher many Assignment
+            modelBuilder.Entity<Assignment>()
+               .HasOne(p => p.AssistentTeacher)
+               .WithMany(b => b.Assignments_)
+               .HasForeignKey(b => b.Assignment_Id);
 
              // Multiple Content areas to one content
              modelBuilder.Entity<ContentArea>()
