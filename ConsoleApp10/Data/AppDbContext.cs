@@ -141,6 +141,14 @@ namespace ConsoleApp10
              modelBuilder.Entity<ContentArea>()
                  .HasMany(a => a.Audios)
                  .WithOne(ca => ca.ContentArea_Id);
+
+            // many to many GroupAssignment, many groups many assignments
+            modelBuilder.Entity<GroupAssignment>()
+                .HasOne(p => p.Group)
+                .WithMany(p => p.GroupAssignment);
+            modelBuilder.Entity<GroupAssignment>()
+                .HasOne(a => a.Assignment)
+                .WithMany(a => a.GroupAssignment);
         }
 
 
