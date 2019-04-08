@@ -107,13 +107,13 @@ namespace ConsoleApp10
             modelBuilder.Entity<Assignment>()
                .HasOne(p => p.Teacher)
                .WithMany(b => b.Assignments)
-               .HasForeignKey(b => b.Assignment_Id);
+               .HasForeignKey(b => b.AU_ID);
 
             //one AssistentTeacher many Assignment
             modelBuilder.Entity<Assignment>()
                .HasOne(p => p.AssistentTeacher)
                .WithMany(b => b.Assignments_)
-               .HasForeignKey(b => b.Assignment_Id);
+               .HasForeignKey(b => b.AU_Id);
 
              // Multiple Content areas to one content
              modelBuilder.Entity<ContentArea>()
