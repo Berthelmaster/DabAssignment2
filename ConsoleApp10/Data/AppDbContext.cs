@@ -28,7 +28,6 @@ namespace ConsoleApp10
         public DbSet<Video> Video { get; set; }
         public DbSet<AssistantTeacher> AssistantTeacher { get; set; }
         public DbSet<ContentArea> ContentArea { get; set; }
-        //public DbSet<ContentFolder> ContentFolder { get; set; }
         public DbSet<CourseAssignment> CourseAssignment { get; set; }
         public DbSet<CourseContent> CourseContents { get; set; }
         public DbSet<CourseGroup> CourseGroup { get; set; }
@@ -119,32 +118,7 @@ namespace ConsoleApp10
              modelBuilder.Entity<ContentArea>()
                  .HasOne(c => c.Content)
                  .WithMany(ca => ca.ContentAreas);
-                 //.HasForeignKey(ca => ca.ContentFolder_Id);
-
-             // Multiple Content folders to one content
-             //modelBuilder.Entity<ContentFolder>()
-             //    .HasOne(c => c.Content)
-             //    .WithMany(cf => cf.ContentFolders)
-             //    .HasForeignKey(cf => cf.Content_id);
-
-             // Multiple Content areas to one Content folder
-             //modelBuilder.Entity<ContentArea>()
-             //    .HasOne(cf => cf.ContentFolder)
-             //    .WithMany(ca => ca.ContentAreas);
-
-             //// Multiple sub elements to one Content area
-             //modelBuilder.Entity<ContentArea>()
-             //    .HasMany(v => v.Videos)
-             //    .WithOne(ca => ca.ContentArea_Id);
-             //modelBuilder.Entity<ContentArea>()
-             //    .HasMany(gsul => gsul.GroupSignUpLinks)
-             //    .WithOne(ca => ca.ContentArea_Id);
-             //modelBuilder.Entity<ContentArea>()
-             //    .HasMany(tb => tb.TextBlocks)
-             //    .WithOne(ca => ca.ContentArea_Id);
-             //modelBuilder.Entity<ContentArea>()
-             //    .HasMany(a => a.Audios)
-             //    .WithOne(ca => ca.ContentArea_Id);
+                 
 
              // Subelements of content are foreignkeys
              modelBuilder.Entity<GroupSignUpLink>()
