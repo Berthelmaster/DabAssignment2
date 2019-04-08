@@ -39,7 +39,7 @@ namespace ConsoleApp10
                     Console.WriteLine("Write student AU_Id & course_Id");
                     var _studentID = Convert.ToInt32(Console.ReadLine());
                     var studentcourseID = Convert.ToInt32(Console.ReadLine());
-                    Command.ListStudentAssignment(_studentID, studentcourseID);
+                    Command.ListStudentAssignments(_studentID, studentcourseID);
                     break;
                 
             }
