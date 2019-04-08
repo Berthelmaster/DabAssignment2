@@ -4,14 +4,16 @@ using ConsoleApp10;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ConsoleApp10.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190408092949_GroupAssignmentDOne")]
+    partial class GroupAssignmentDOne
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,13 +112,11 @@ namespace ConsoleApp10.Migrations
 
                     b.Property<int>("Folder_Id");
 
-                    b.Property<int?>("Folder_id");
-
                     b.HasKey("Area_Id");
 
-                    b.HasIndex("Folder_Id");
+                    b.HasIndex("Content_Id");
 
-                    b.HasIndex("Folder_id");
+                    b.HasIndex("Folder_Id");
 
                     b.ToTable("ContentArea");
                 });
@@ -350,12 +350,13 @@ namespace ConsoleApp10.Migrations
                 {
                     b.HasOne("ConsoleApp10.Content", "Content")
                         .WithMany("ContentAreas")
-                        .HasForeignKey("Folder_Id")
+                        .HasForeignKey("Content_Id")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ConsoleApp10.ContentFolder", "Folder")
                         .WithMany("ContentAreas")
-                        .HasForeignKey("Folder_id");
+                        .HasForeignKey("Folder_Id")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ConsoleApp10.ContentFolder", b =>

@@ -115,32 +115,55 @@ namespace ConsoleApp10
              // Multiple Content areas to one content
              modelBuilder.Entity<ContentArea>()
                  .HasOne(c => c.Content)
-                 .WithMany(ca => ca.ContentAreas);
+                 .WithMany(ca => ca.ContentAreas)
+                 .HasForeignKey(ca => ca.ContentFolder_Id);
 
              // Multiple Content folders to one content
              modelBuilder.Entity<ContentFolder>()
                  .HasOne(c => c.Content)
-                 .WithMany(cf => cf.ContentFolders);
+                 .WithMany(cf => cf.ContentFolders)
+                 .HasForeignKey(cf => cf.Content_id);
 
              // Multiple Content areas to one Content folder
              modelBuilder.Entity<ContentArea>()
-                 .HasOne(cf => cf.Folder)
+                 .HasOne(cf => cf.ContentFolder)
                  .WithMany(ca => ca.ContentAreas);
 
-             // Multiple sub elements to one Content area
-             modelBuilder.Entity<ContentArea>()
-                 .HasMany(v => v.Videos)
-                 .WithOne(ca => ca.ContentArea_Id);
-             modelBuilder.Entity<ContentArea>()
-                 .HasMany(gsul => gsul.GroupSignUpLinks)
-                 .WithOne(ca => ca.ContentArea_Id);
-             modelBuilder.Entity<ContentArea>()
-                 .HasMany(tb => tb.TextBlocks)
-                 .WithOne(ca => ca.ContentArea_Id);
-             modelBuilder.Entity<ContentArea>()
-                 .HasMany(a => a.Audios)
-                 .WithOne(ca => ca.ContentArea_Id);
+             //// Multiple sub elements to one Content area
+             //modelBuilder.Entity<ContentArea>()
+             //    .HasMany(v => v.Videos)
+             //    .WithOne(ca => ca.ContentArea_Id);
+             //modelBuilder.Entity<ContentArea>()
+             //    .HasMany(gsul => gsul.GroupSignUpLinks)
+             //    .WithOne(ca => ca.ContentArea_Id);
+             //modelBuilder.Entity<ContentArea>()
+             //    .HasMany(tb => tb.TextBlocks)
+             //    .WithOne(ca => ca.ContentArea_Id);
+             //modelBuilder.Entity<ContentArea>()
+             //    .HasMany(a => a.Audios)
+             //    .WithOne(ca => ca.ContentArea_Id);
 
+             // Subelements of content are foreignkeys
+             modelBuilder.Entity<GroupSignUpLink>()
+                 .HasOne(ca => ca.ContentArea_Id)
+                 .WithMany(gsul => gsul.GroupSignUpLinks)
+                 .HasForeignKey(ca => ca.Area_Id);
+
+             modelBuilder.Entity<Audio>()
+                 .HasOne(ca => ca.ContentArea_Id)
+                 .WithMany(a => a.Audios)
+                 .HasForeignKey(ca => ca.Area_Id);
+
+             modelBuilder.Entity<TextBlock>()
+                 .HasOne(ca => ca.ContentArea_Id)
+                 .WithMany(tb => tb.TextBlocks)
+                 .HasForeignKey(ca => ca.Area_Id);
+
+             modelBuilder.Entity<Video>()
+                 .HasOne(ca => ca.ContentArea_Id)
+                 .WithMany(v=> v.Videos)
+                 .HasForeignKey(ca => ca.Area_Id);
+             
             // many to many GroupAssignment, many groups many assignments
             modelBuilder.Entity<GroupAssignment>()
                 .HasKey(ga => new { ga.Assignment_ID, ga.GroupID });

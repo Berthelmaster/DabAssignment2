@@ -11,7 +11,6 @@ namespace ConsoleApp10
         [Key]
         public int Video_id { get; set; }
 
-        [ForeignKey("ContentArea_Id")]
         public int Area_Id { get; set; }
         public ContentArea ContentArea_Id { get; set; }
 

@@ -10,8 +10,7 @@ namespace ConsoleApp10
     {
         [Key]
         public int Folder_id { get; set; }
-
-        [ForeignKey("Content")]
+        
         public int Content_id { get; set; }
         public Content Content { get; set; }
 

@@ -11,13 +11,11 @@ namespace ConsoleApp10
         [Key]
         public int Area_Id { get; set; }
 
-        [ForeignKey("Content")]
         public int Content_Id { get; set; }
         public Content Content { get; set; }
 
-        [ForeignKey("Folder")]
-        public int Folder_Id { get; set; }
-        public ContentFolder Folder { get; set; }
+        public int ContentFolder_Id { get; set; }
+        public ContentFolder ContentFolder { get; set; }
 
         public List<GroupSignUpLink> GroupSignUpLinks { get; set; }
 
