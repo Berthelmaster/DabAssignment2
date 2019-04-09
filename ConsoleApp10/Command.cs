@@ -118,7 +118,11 @@ namespace ConsoleApp10
                 Birthday = AddStudent_Birthday
             };
 
-
+            using (var db = new AppDbContext())
+            {
+                db.Students.Add(student);
+                db.SaveChanges();
+            }
 
         }
     }

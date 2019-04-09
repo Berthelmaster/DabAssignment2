@@ -41,6 +41,9 @@ namespace ConsoleApp10
                     var studentcourseID = Convert.ToInt32(Console.ReadLine());
                     Command.ListStudentAssignments(_studentID, studentcourseID);
                     break;
+                case "7":
+                    Command.AddStudent();
+                    break;
                 
             }
 
