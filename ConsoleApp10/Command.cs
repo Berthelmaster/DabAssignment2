@@ -99,5 +99,27 @@ namespace ConsoleApp10
                 }
             }
         }
+
+        public static void AddStudent()
+        {
+            Console.WriteLine("Enter AU_ID: ");
+            var AddStudent_AU_Id = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter Student name: ");
+            var AddStudent_Name = Console.ReadLine();
+
+            Console.WriteLine("Enter Birthday: ");
+            var AddStudent_Birthday = Convert.ToDateTime(Console.ReadLine());
+
+            var student = new Students()
+            {
+                AU_ID = AddStudent_AU_Id,
+                Name = AddStudent_Name,
+                Birthday = AddStudent_Birthday
+            };
+
+
+
+        }
     }
 }
