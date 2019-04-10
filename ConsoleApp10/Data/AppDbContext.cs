@@ -163,6 +163,31 @@ namespace ConsoleApp10
                  .HasOne(t => t.Teacher)
                  .WithMany(ct => ct.CourseTeachers)
                  .HasForeignKey(ct => ct.AU_id);
+
+            //Seeding Data in Database teachers
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { AU_ID = 0001, Name = "Henrik Hansen", Birthday = new DateTime(1980, 4, 21) });
+            modelBuilder.Entity<Teacher>().HasData(new Teacher { AU_ID = 0002, Name = "Poul Petersen", Birthday = new DateTime(1981, 5, 22) });
+
+            //Assistent teacher
+            modelBuilder.Entity<AssistantTeacher>().HasData(new AssistantTeacher { AU_ID = 0003, Name = "Mikkel Mortensen", Birthday = new DateTime(1993, 9, 15) });
+            modelBuilder.Entity<AssistantTeacher>().HasData(new AssistantTeacher { AU_ID = 0004, Name = "Thomas Thomsen", Birthday = new DateTime(1994, 10, 16) });
+
+            //Group
+            modelBuilder.Entity<Group>().HasData(new Group { GroupID = 001, GroupSize = 3 });
+            modelBuilder.Entity<Group>().HasData(new Group { GroupID = 002, GroupSize = 4 });
+
+            //Calendar
+
+            modelBuilder.Entity<Calendar>().HasData(new Calendar { Calendar_id = 001, CourseLecture = new DateTime(2019, 4, 8), Handin = new DateTime(2019, 4, 12), Deadlines = new DateTime(2019, 4, 15) });
+            modelBuilder.Entity<Calendar>().HasData(new Calendar { Calendar_id = 002, CourseLecture = new DateTime(2019, 5, 9), Handin = new DateTime(2019, 5, 20), Deadlines = new DateTime(2019, 5, 20) });
+
+            //Course
+            modelBuilder.Entity<Course>().HasData(new Course { Course_id = 001, Name = "I4GUI", Status = true, Calendar_id = 002 });
+            modelBuilder.Entity<Course>().HasData(new Course { Course_id = 002, Name = "I4DAB", Status = true, Calendar_id = 001 });
+
+            //Course Teachers
+            modelBuilder.Entity<CourseTeacher>().HasData(new CourseTeacher { AU_id = 0001, Course_id = 001 });
+            modelBuilder.Entity<CourseTeacher>().HasData(new CourseTeacher { AU_id = 0002, Course_id = 002 });
         }
 
 
