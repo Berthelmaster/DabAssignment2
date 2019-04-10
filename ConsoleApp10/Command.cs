@@ -177,15 +177,13 @@ namespace ConsoleApp10
         {
             using (var db = new AppDbContext())
             {
-                var groupList = await db.Group.ToListAsync();
+                var groupList = await db.Group
+                    .Include(v => v._Students)
+                    .SingleAsync(g => g.GroupID.Equals(1));
                 Console.WriteLine("All Student List: \n");
-                foreach (var student in groupList)
+                foreach (var student in groupList._Students)
                 {
-                    foreach (var grs in student._Students)
-                    {
-                        Console.WriteLine("name: {0}", grs.Name);
-
-                    }
+                    Console.WriteLine("{0}", student.Name);
                     
                 }
             }
