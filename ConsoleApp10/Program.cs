@@ -46,6 +46,9 @@ namespace ConsoleApp10
                     Command.AddStudent();
                     break;
                 case "8":
+                    Command.addCourse();
+                    break;
+                case "9":
                     Command.showstudentsgroup();
                     break;
 

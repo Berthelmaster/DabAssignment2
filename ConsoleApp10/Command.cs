@@ -102,10 +102,7 @@ namespace ConsoleApp10
 
         public static void AddStudent()
         {
-            /*
-            Console.WriteLine("Enter AU_ID: ");
-            var AddStudent_AU_Id = Convert.ToInt32(Console.ReadLine());
-            */
+            
 
             Console.WriteLine("Enter Student name: ");
             var AddStudent_Name = Console.ReadLine();
@@ -122,7 +119,6 @@ namespace ConsoleApp10
 
             var student = new Students()
             {
-                //AU_ID = AddStudent_AU_Id,
                 Name = AddStudent_Name,
                 Birthday = AddStudent_Birthday,
                 Group_id = groupid
@@ -130,7 +126,7 @@ namespace ConsoleApp10
             };
             var group = new Group()
             {
-                //GroupID = groupid,
+                
                 GroupSize = size
             };
 
@@ -159,17 +155,65 @@ namespace ConsoleApp10
 
         public static void addCourse()
         {
-            /*
-            Console.WriteLine("Write Course_id");
-            var Courseid = Convert.ToInt32(Console.ReadLine());
-            */
+            
             Console.WriteLine("Write name: ");
             var coursename = Console.ReadLine();
 
             Console.WriteLine("Write Course activity true or false");
             var coursestatus = Convert.ToBoolean(Console.ReadLine());
 
-            
+            Console.WriteLine("Write Calendar_id");
+            var Calendarids = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Write Courselecture");
+            var Courselec = Convert.ToDateTime(Console.ReadLine());
+
+            Console.WriteLine("Write Handin");
+            var Handin = Convert.ToDateTime(Console.ReadLine());
+
+            Console.WriteLine("Write Deadlines");
+            var Deadlines = Convert.ToDateTime(Console.ReadLine());
+
+
+
+            var course = new Course()
+            {
+                Name = coursename,
+                Status = coursestatus,
+                Calendar_id = Calendarids
+            };
+
+            var calendar = new Calendar()
+            {
+                CourseLecture = Courselec,
+                Handin = Handin,
+                Deadlines = Deadlines
+            };
+
+
+
+            using (var db = new AppDbContext())
+            {
+                db.Course.Add(course);
+                db.Calendar.Add(calendar);
+                
+                db.Database.OpenConnection();
+
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                finally
+                {
+                    db.Database.CloseConnection();
+                    Console.WriteLine("Done");
+                }
+
+
+            }
+
+
 
         }
 
