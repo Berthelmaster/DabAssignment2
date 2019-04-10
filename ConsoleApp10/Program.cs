@@ -6,6 +6,7 @@ namespace ConsoleApp10
     {
         static void Main(string[] args)
         {
+            
             Console.WriteLine("Hello! You have the following Options: \n" +
                               "Press 1 to List all students \n" + "Press 2 to list all Courses \n" + "Press 3 to Search for student using AU_ID \n" + "Press 4 to list student and teachers assigned to a give Course \n" + "Press 5\n" + "Press 6\n");
             var choice = Console.ReadLine();
@@ -44,11 +45,18 @@ namespace ConsoleApp10
                 case "7":
                     Command.AddStudent();
                     break;
-                
+                case "8":
+                    Command.showstudentsgroup();
+                    break;
+
+
             }
 
-            //while (true) ;
-            Console.ReadLine();
+            
+
+
+                //while (true) ;
+                Console.ReadLine();
 
         }
     }

@@ -130,7 +130,7 @@ namespace ConsoleApp10
             };
             var group = new Group()
             {
-                GroupID = groupid,
+                //GroupID = groupid,
                 GroupSize = size
             };
 
@@ -144,22 +144,51 @@ namespace ConsoleApp10
 
                 try
                 {
-                    //db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Students ON");
-                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Group ON");
-
                     db.SaveChanges();
-                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Group OFF");
-                    //db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Students OFF");
-                    
                 }
                 finally
                 {
                     db.Database.CloseConnection();
+                    Console.WriteLine("Done");
                 }
 
 
             }
 
+        }
+
+        public static void addCourse()
+        {
+            /*
+            Console.WriteLine("Write Course_id");
+            var Courseid = Convert.ToInt32(Console.ReadLine());
+            */
+            Console.WriteLine("Write name: ");
+            var coursename = Console.ReadLine();
+
+            Console.WriteLine("Write Course activity true or false");
+            var coursestatus = Convert.ToBoolean(Console.ReadLine());
+
+            
+
+        }
+
+        public static async void showstudentsgroup()
+        {
+            using (var db = new AppDbContext())
+            {
+                var groupList = await db.Group.ToListAsync();
+                Console.WriteLine("All Student List: \n");
+                foreach (var student in groupList)
+                {
+                    foreach (var grs in student._Students)
+                    {
+                        Console.WriteLine("name: {0}", grs.Name);
+
+                    }
+                    
+                }
+            }
         }
     }
 }
