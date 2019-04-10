@@ -136,7 +136,7 @@ namespace ConsoleApp10
 
             using (var db = new AppDbContext())
             {
-                db.Groups.Add(group);
+                db.Group.Add(group);
                 db.Students.Add(student);
                 
                 db.Database.OpenConnection();
@@ -145,10 +145,10 @@ namespace ConsoleApp10
                 try
                 {
                     //db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Students ON");
-                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Groups ON");
+                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Group ON");
 
                     db.SaveChanges();
-                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Groups OFF");
+                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Group OFF");
                     //db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Students OFF");
                     
                 }

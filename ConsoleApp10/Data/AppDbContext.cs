@@ -20,7 +20,7 @@ namespace ConsoleApp10
         public DbSet<Calendar> Calendar { get; set; }
         public DbSet<Content> Content { get; set; }
         public DbSet<Course> Course { get; set; }
-        public DbSet<Group> Groups { get; set; }
+        public DbSet<Group> Group { get; set; }
         public DbSet<GroupSignUpLink> GroupSignUpLink { get; set; }
         public DbSet<Students> Students { get; set; }
         public  DbSet<Teacher> Teacher { get; set; }
