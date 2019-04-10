@@ -14,6 +14,7 @@ namespace ConsoleApp10
         public Students _Students { get; set; }
         public DateTime EnrolledDate { get; set; }
         public DateTime GraduationDate { get; set; }
+        public int Grade { get; set; }
 
     }
 }

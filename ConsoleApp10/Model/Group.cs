@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,5 +17,6 @@ namespace ConsoleApp10
         public List<Students> _Students { get; set; }
         public List<CourseGroup> CourseGroups { get; set; }
         public List <GroupAssignment> GroupAssignment { get; set; }
+        
     }
 }

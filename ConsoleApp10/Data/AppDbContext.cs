@@ -43,8 +43,8 @@ namespace ConsoleApp10
             modelBuilder.Entity<Students>()
                 .HasOne(ba => ba.Group)
                 .WithMany(b => b._Students)
-                .HasForeignKey(bc => bc.Group_id)
-                .IsRequired();
+                .HasForeignKey(bc => bc.Group_id);
+                //.IsRequired();
 
             // Many students have Many Courses through CourseEnrolledmentStudent
             modelBuilder.Entity<CourseEnrolledStudents>()
