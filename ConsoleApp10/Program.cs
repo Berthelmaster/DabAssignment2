@@ -51,6 +51,9 @@ namespace ConsoleApp10
                 case "9":
                     Command.showstudentsgroup();
                     break;
+                case "10":
+                    Command.Enrollstudent();
+                    break;
 
 
             }

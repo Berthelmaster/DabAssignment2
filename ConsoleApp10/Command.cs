@@ -217,6 +217,32 @@ namespace ConsoleApp10
 
         }
 
+        public static async void Enrollstudent()
+        {
+
+            Console.WriteLine("What the students AU_Id?: ");
+            var studentid = Convert.ToInt32(Console.ReadLine());
+            
+            Console.WriteLine("What course do you want the student to join?");
+            var courseid = Convert.ToInt32(Console.ReadLine());
+
+            using (var db = new AppDbContext())
+            {
+                var studentlist = await db.Students
+                    .Include(v => v.CourseEnrolledStudents)
+                    .SingleAsync(g => g.AU_ID.Equals(studentid));
+
+                Console.WriteLine("Student: \n");
+                foreach (var VARIABLE in studentlist.CourseEnrolledStudents)
+                {
+                    Console.WriteLine("{0}", VARIABLE.AU_id);
+                }
+
+            }
+        }
+
+
+        // This is a test, not required
         public static async void showstudentsgroup()
         {
             using (var db = new AppDbContext())
