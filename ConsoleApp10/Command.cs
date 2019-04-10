@@ -102,8 +102,10 @@ namespace ConsoleApp10
 
         public static void AddStudent()
         {
+            /*
             Console.WriteLine("Enter AU_ID: ");
             var AddStudent_AU_Id = Convert.ToInt32(Console.ReadLine());
+            */
 
             Console.WriteLine("Enter Student name: ");
             var AddStudent_Name = Console.ReadLine();
@@ -111,15 +113,16 @@ namespace ConsoleApp10
             Console.WriteLine("Enter Birthday: ");
             var AddStudent_Birthday = DateTime.Parse(Console.ReadLine());
 
+            
             Console.WriteLine("groupid: ");
             var groupid = Convert.ToInt32(Console.ReadLine());
-
+            
             Console.WriteLine("Groupsize");
             var size = Convert.ToUInt32(Console.ReadLine());
 
             var student = new Students()
             {
-                AU_ID = AddStudent_AU_Id,
+                //AU_ID = AddStudent_AU_Id,
                 Name = AddStudent_Name,
                 Birthday = AddStudent_Birthday,
                 Group_id = groupid
@@ -141,12 +144,12 @@ namespace ConsoleApp10
 
                 try
                 {
-                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Students ON");
+                    //db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Students ON");
                     db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Groups ON");
 
                     db.SaveChanges();
                     db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Groups OFF");
-                    db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Students OFF");
+                    //db.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.Students OFF");
                     
                 }
                 finally
