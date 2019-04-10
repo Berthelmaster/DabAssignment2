@@ -20,7 +20,7 @@ namespace ConsoleApp10
         public DbSet<Calendar> Calendar { get; set; }
         public DbSet<Content> Content { get; set; }
         public DbSet<Course> Course { get; set; }
-        public DbSet<Group> Group { get; set; }
+        public DbSet<Group> Groups { get; set; }
         public DbSet<GroupSignUpLink> GroupSignUpLink { get; set; }
         public DbSet<Students> Students { get; set; }
         public  DbSet<Teacher> Teacher { get; set; }
@@ -43,8 +43,8 @@ namespace ConsoleApp10
             modelBuilder.Entity<Students>()
                 .HasOne(ba => ba.Group)
                 .WithMany(b => b._Students)
-                .HasForeignKey(bc => bc.Group_id)
-                .IsRequired();
+                .HasForeignKey(bc => bc.Group_id);
+                //.IsRequired();
 
             // Many students have Many Courses through CourseEnrolledmentStudent
             modelBuilder.Entity<CourseEnrolledStudents>()
