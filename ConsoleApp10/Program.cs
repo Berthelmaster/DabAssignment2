@@ -54,6 +54,9 @@ namespace ConsoleApp10
                 case "10":
                     Command.Enrollstudent();
                     break;
+                case "11":
+                    Command.AddAssignment();
+                    break;
 
 
             }
