@@ -240,6 +240,8 @@ namespace ConsoleApp10
             modelBuilder.Entity<Audio>().HasData(new Audio { Audio_id = 401, Area_Id = 1900 });
             modelBuilder.Entity<Audio>().HasData(new Audio { Audio_id = 402, Area_Id = 1200 });
 
+            SaveChanges();
+
 
         }
 
