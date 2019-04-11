@@ -217,7 +217,7 @@ namespace ConsoleApp10
 
         }
 
-        public static async void Enrollstudent()
+        public static void Enrollstudent()
         {
 
             Console.WriteLine("What is the students AU_Id?: ");
@@ -226,18 +226,37 @@ namespace ConsoleApp10
             Console.WriteLine("What course do you want the student to join?");
             var courseid = Convert.ToInt32(Console.ReadLine());
 
+            Console.WriteLine("Enter Enrolldate");
+            var enrolldate = Convert.ToDateTime(Console.ReadLine());
+
+            Console.WriteLine("Enter Graduation date");
+            var Graduationdate = Convert.ToDateTime(Console.ReadLine());
+
+            Console.WriteLine("Write Grade: ");
+            var grade = Convert.ToInt32(Console.ReadLine());
+
             using (var db = new AppDbContext())
             {
-                var studentlist = await db.Students
-                    .Include(v => v.CourseEnrolledStudents)
-                    .SingleAsync(g => g.AU_ID.Equals(studentid));
-
-                Console.WriteLine("Student: \n");
-                foreach (var VARIABLE in studentlist.CourseEnrolledStudents)
+                var enrollstudent = new CourseEnrolledStudents()
                 {
-                    Console.WriteLine("{0}", VARIABLE.AU_id);
-                }
+                    Course_id = courseid,
+                    AU_id = studentid,
+                    EnrolledDate = enrolldate,
+                    GraduationDate = Graduationdate,
+                    Grade = grade
+                    
+                };
+                db.CourseEnrolledStudents.Add(enrollstudent);
 
+                var students = db.Students.Single(a => a.AU_ID.Equals(studentid));
+                var course = db.Course.Single(c => c.Course_id.Equals(courseid));
+
+                students.CourseEnrolledStudents.Add(enrollstudent);
+                course.CourseEnrolledStudents.Add(enrollstudent);
+
+                db.SaveChanges();
+
+                    
             }
         }
 
