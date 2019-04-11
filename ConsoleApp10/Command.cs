@@ -337,6 +337,7 @@ namespace ConsoleApp10
 
             using (var db = new AppDbContext())
             {
+                /*
                 var _grades = await db.Assignment.ToListAsync();
                 Console.WriteLine("All Assignment ids List: \n");
                 foreach (var student in _grades)
@@ -350,7 +351,20 @@ namespace ConsoleApp10
                 var assignment = db.Assignment.Single(a => a.Assignment_Id.Equals(assignemntid));
 
                 assignment.Grades = assignedgrade;
-
+                */
+                
+                Console.WriteLine("indtast ID for opgaven");
+                var id = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("indtast karakteren");
+                var karakter = Convert.ToInt32(Console.ReadLine());
+                //Trækker pågældende assignment ud
+                var entity = db.Assignment.FirstOrDefault(item => item.Assignment_Id == id);
+                if (entity != null) 
+                {
+                    //ændrer karakteren
+                    entity.Grades = karakter;                  
+                }
+                //save changes
                 db.SaveChanges();
                 
             }
