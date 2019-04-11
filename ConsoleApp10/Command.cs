@@ -94,10 +94,32 @@ namespace ConsoleApp10
         {
             using (var db = new AppDbContext())
             {
-                var studentsAssignments = await db.CourseEnrolledStudents.Where(c => c.Course_id == courseId && c.AU_id == courseId).ToListAsync();
+                var testjoin = (from thelist in db.CourseEnrolledStudents
+                        join detail in db.CourseAssignment on
+                            thelist.Course_id equals detail.Course_id
+                        where thelist.AU_id == studentId
+                        select new
+                        {
+                            detail.Assignment
+                        }
+                    ).ToList();
+
+                foreach (var tag in testjoin)
+                {
+                    Console.WriteLine("Assignment id: {0}", tag.Assignment.Assignment_Id);
+                    Console.WriteLine("Grade: {0}", tag.Assignment.Grades);
+                    Console.WriteLine("Graded by: {0} \n", (tag.Assignment.AU_ID != null ? tag.Assignment.AU_ID: tag.Assignment.AU_Id_Assistant));
+
+                }
+                /*
+                var studentsAssignments = await db.CourseEnrolledStudents.Where(c => c.Course_id == courseId && c.AU_id == studentId)
+                    .Include(a => a._Course.CourseTeachers)
+                    .ToListAsync();
                 Console.WriteLine("List of content to course: \n");
                 foreach (var student in studentsAssignments)
                 {
+                    
+                    
                     foreach (var assignment in student._Course.CourseAssignments)
                     {
                         Console.WriteLine("Assignment id: {0}", assignment.Assignment.Assignment_Id);
@@ -106,6 +128,7 @@ namespace ConsoleApp10
                     }
                     
                 }
+                */
             }
         }
 

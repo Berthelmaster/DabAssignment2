@@ -49,8 +49,9 @@ namespace ConsoleApp10
                         Command.ListCourseContent(_courseID);
                         break;
                     case "6":
-                        Console.WriteLine("Write student AU_Id & course_Id");
+                        Console.WriteLine("Write student AU_Id");
                         var _studentID = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Write CourseId");
                         var studentcourseID = Convert.ToInt32(Console.ReadLine());
                         Command.ListStudentAssignments(_studentID, studentcourseID);
                         break;

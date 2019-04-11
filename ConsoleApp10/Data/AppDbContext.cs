@@ -220,6 +220,9 @@ namespace ConsoleApp10
             modelBuilder.Entity<CourseContent>().HasData(new CourseContent { Course_id = 001, Content_id = 1000 });
             modelBuilder.Entity<CourseContent>().HasData(new CourseContent { Course_id = 002, Content_id = 1020 });
 
+            //CourseAssignemnts
+            modelBuilder.Entity<CourseAssignment>().HasData(new CourseAssignment {Course_id = 001, Assignment_id = 1234});
+
             //ContentArea
             modelBuilder.Entity<ContentArea>().HasData(new ContentArea { Area_Id = 1200, Content_Id = 1000 });
             modelBuilder.Entity<ContentArea>().HasData(new ContentArea { Area_Id = 1900, Content_Id = 1020 });
