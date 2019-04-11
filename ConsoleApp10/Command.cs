@@ -259,40 +259,22 @@ namespace ConsoleApp10
             }
         }
 
-        public static async void AddAssignment()
+        public static void AddAssignment()
         {
-            Console.WriteLine("Write the assignment you want to add: ");
-            var assignmentId = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Write the group to assign the assignment to");
-            var groupId = Convert.ToInt32(Console.ReadLine());
+            // Console.WriteLine("Write the assignment you want to add: ");
+            // var assignmentId = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Is the grading done by an assistant-teacher? ");
             var assistant = Console.ReadLine();
 
-            Console.WriteLine("Write the AU_ID of the teacher");
+            Console.WriteLine("Write the AU_ID of the teacher, responsible for grading");
             var auId = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Enter hand in date: ");
             var handinDate = DateTime.Parse(Console.ReadLine());
 
-            Console.WriteLine("Enter the course id the assingment is for: ");
-            var courseId = Convert.ToInt32(Console.ReadLine());
-
-            var groupAssignment = new GroupAssignment
-            {
-                Assignment_ID = assignmentId, GroupID = groupId
-            };
-
-            var courseAssignment = new CourseAssignment
-            {
-                Assignment_id = assignmentId,
-                Course_id = courseId
-            };
-
             var assignment = new Assignment
             {
-                Assignment_Id = assignmentId,
                 HandInDate = handinDate
             };
 
@@ -309,8 +291,6 @@ namespace ConsoleApp10
             using (var db = new AppDbContext())
             {
                 db.Assignment.Add(assignment);
-                db.CourseAssignment.Add(courseAssignment);
-                db.GroupAssignment.Add(groupAssignment);
 
                 db.Database.OpenConnection();
 
