@@ -39,7 +39,9 @@ namespace ConsoleApp10
         {
             using (var db = new AppDbContext())
             {
-                var studentCourses = await db.CourseEnrolledStudents.Where(s=>s.AU_id==studentId).ToListAsync();
+                var studentCourses = await db.CourseEnrolledStudents.Where(s=>s.AU_id==studentId)
+                    .Include(s => s._Course)
+                    .ToListAsync();
                 Console.WriteLine("List of courses for students: \n");
                 foreach (var course in studentCourses)
                 {
