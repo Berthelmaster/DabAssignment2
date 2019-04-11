@@ -56,17 +56,21 @@ namespace ConsoleApp10
         {
             using (var db = new AppDbContext())
             {
-                var courseStudents = await db.CourseEnrolledStudents.Where(c => c.Course_id == courseId).ToListAsync();
-                var courseTeachers = await db.CourseTeacher.Where(c => c.Course_id == courseId).ToListAsync();
+                var courseStudents = await db.CourseEnrolledStudents.Where(c => c.Course_id == courseId)
+                    .Include(v => v._Students)
+                    .ToListAsync();
+                var courseTeachers = await db.CourseTeacher.Where(c => c.Course_id == courseId)
+                    .Include(f => f.Teacher)
+                    .ToListAsync();
                 Console.WriteLine("List of assigned students and teachers to course: \n");
                 foreach (var student in courseStudents)
                 {
-                    Console.WriteLine("Student name: {0}", student._Students.Name);
+                    Console.WriteLine("Student name: {0} \n", student._Students.Name);
                 }
 
                 foreach (var teacher in courseTeachers)
                 {
-                    Console.WriteLine("\nTeacher name: {0}", teacher.Teacher.Name);
+                    Console.WriteLine("Teacher name: {0} \n", teacher.Teacher.Name);
                 }
             }
         }
