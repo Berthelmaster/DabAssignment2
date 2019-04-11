@@ -9,7 +9,7 @@ namespace ConsoleApp10
     {
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            builder.UseSqlServer(@"Server=Localhost;Database=DabAssignmentV2;Integrated Security=True");
+            builder.UseSqlServer(@"Server=Localhost;Database=DabAssignmentV4;Integrated Security=True");
         }
 
 

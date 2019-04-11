@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConsoleApp10.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190408122312_initialmigration")]
-    partial class initialmigration
+    [Migration("20190411113346_InitialCreatev4")]
+    partial class InitialCreatev4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,6 +42,24 @@ namespace ConsoleApp10.Migrations
                     b.HasIndex("AU_Id_Assistant");
 
                     b.ToTable("Assignment");
+
+                    b.HasData(
+                        new
+                        {
+                            Assignment_Id = 1234,
+                            AU_ID = 1,
+                            AU_Id_Assistant = 3,
+                            Grades = 10,
+                            HandInDate = new DateTime(2019, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Assignment_Id = 1423,
+                            AU_ID = 2,
+                            AU_Id_Assistant = 4,
+                            Grades = 12,
+                            HandInDate = new DateTime(2019, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.AssistantTeacher", b =>
@@ -57,6 +75,20 @@ namespace ConsoleApp10.Migrations
                     b.HasKey("AU_ID");
 
                     b.ToTable("AssistantTeacher");
+
+                    b.HasData(
+                        new
+                        {
+                            AU_ID = 3,
+                            Birthday = new DateTime(1993, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Mikkel Mortensen"
+                        },
+                        new
+                        {
+                            AU_ID = 4,
+                            Birthday = new DateTime(1994, 10, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Thomas Thomsen"
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.Audio", b =>
@@ -72,6 +104,18 @@ namespace ConsoleApp10.Migrations
                     b.HasIndex("Area_Id");
 
                     b.ToTable("Audios");
+
+                    b.HasData(
+                        new
+                        {
+                            Audio_id = 401,
+                            Area_Id = 1900
+                        },
+                        new
+                        {
+                            Audio_id = 402,
+                            Area_Id = 1200
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.Calendar", b =>
@@ -89,6 +133,22 @@ namespace ConsoleApp10.Migrations
                     b.HasKey("Calendar_id");
 
                     b.ToTable("Calendar");
+
+                    b.HasData(
+                        new
+                        {
+                            Calendar_id = 1,
+                            CourseLecture = new DateTime(2019, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Deadlines = new DateTime(2019, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Handin = new DateTime(2019, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Calendar_id = 2,
+                            CourseLecture = new DateTime(2019, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Deadlines = new DateTime(2019, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Handin = new DateTime(2019, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.Content", b =>
@@ -100,6 +160,16 @@ namespace ConsoleApp10.Migrations
                     b.HasKey("Content_Id");
 
                     b.ToTable("Content");
+
+                    b.HasData(
+                        new
+                        {
+                            Content_Id = 1000
+                        },
+                        new
+                        {
+                            Content_Id = 1020
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.ContentArea", b =>
@@ -115,6 +185,18 @@ namespace ConsoleApp10.Migrations
                     b.HasIndex("Content_Id");
 
                     b.ToTable("ContentArea");
+
+                    b.HasData(
+                        new
+                        {
+                            Area_Id = 1200,
+                            Content_Id = 1000
+                        },
+                        new
+                        {
+                            Area_Id = 1900,
+                            Content_Id = 1020
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.Course", b =>
@@ -125,6 +207,8 @@ namespace ConsoleApp10.Migrations
 
                     b.Property<int>("Calendar_id");
 
+                    b.Property<string>("Name");
+
                     b.Property<bool>("Status");
 
                     b.HasKey("Course_id");
@@ -132,6 +216,22 @@ namespace ConsoleApp10.Migrations
                     b.HasIndex("Calendar_id");
 
                     b.ToTable("Course");
+
+                    b.HasData(
+                        new
+                        {
+                            Course_id = 1,
+                            Calendar_id = 2,
+                            Name = "I4GUI",
+                            Status = true
+                        },
+                        new
+                        {
+                            Course_id = 2,
+                            Calendar_id = 1,
+                            Name = "I4DAB",
+                            Status = true
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.CourseAssignment", b =>
@@ -158,6 +258,18 @@ namespace ConsoleApp10.Migrations
                     b.HasIndex("Content_id");
 
                     b.ToTable("CourseContents");
+
+                    b.HasData(
+                        new
+                        {
+                            Course_id = 1,
+                            Content_id = 1000
+                        },
+                        new
+                        {
+                            Course_id = 2,
+                            Content_id = 1020
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.CourseEnrolledStudents", b =>
@@ -168,6 +280,8 @@ namespace ConsoleApp10.Migrations
 
                     b.Property<DateTime>("EnrolledDate");
 
+                    b.Property<int>("Grade");
+
                     b.Property<DateTime>("GraduationDate");
 
                     b.HasKey("AU_id", "Course_id");
@@ -175,6 +289,24 @@ namespace ConsoleApp10.Migrations
                     b.HasIndex("Course_id");
 
                     b.ToTable("CourseEnrolledStudents");
+
+                    b.HasData(
+                        new
+                        {
+                            AU_id = 98,
+                            Course_id = 1,
+                            EnrolledDate = new DateTime(2017, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Grade = 0,
+                            GraduationDate = new DateTime(2021, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            AU_id = 99,
+                            Course_id = 2,
+                            EnrolledDate = new DateTime(2017, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Grade = 0,
+                            GraduationDate = new DateTime(2021, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.CourseGroup", b =>
@@ -188,6 +320,18 @@ namespace ConsoleApp10.Migrations
                     b.HasIndex("Group_id");
 
                     b.ToTable("CourseGroup");
+
+                    b.HasData(
+                        new
+                        {
+                            Course_id = 1,
+                            Group_id = 1
+                        },
+                        new
+                        {
+                            Course_id = 2,
+                            Group_id = 2
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.CourseTeacher", b =>
@@ -201,6 +345,18 @@ namespace ConsoleApp10.Migrations
                     b.HasIndex("AU_id");
 
                     b.ToTable("CourseTeacher");
+
+                    b.HasData(
+                        new
+                        {
+                            Course_id = 1,
+                            AU_id = 1
+                        },
+                        new
+                        {
+                            Course_id = 2,
+                            AU_id = 2
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.Group", b =>
@@ -214,6 +370,18 @@ namespace ConsoleApp10.Migrations
                     b.HasKey("GroupID");
 
                     b.ToTable("Group");
+
+                    b.HasData(
+                        new
+                        {
+                            GroupID = 1,
+                            GroupSize = 3L
+                        },
+                        new
+                        {
+                            GroupID = 2,
+                            GroupSize = 4L
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.GroupAssignment", b =>
@@ -227,6 +395,18 @@ namespace ConsoleApp10.Migrations
                     b.HasIndex("GroupID");
 
                     b.ToTable("GroupAssignment");
+
+                    b.HasData(
+                        new
+                        {
+                            Assignment_ID = 1234,
+                            GroupID = 1
+                        },
+                        new
+                        {
+                            Assignment_ID = 1423,
+                            GroupID = 2
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.GroupSignUpLink", b =>
@@ -242,6 +422,18 @@ namespace ConsoleApp10.Migrations
                     b.HasIndex("Area_Id");
 
                     b.ToTable("GroupSignUpLink");
+
+                    b.HasData(
+                        new
+                        {
+                            GSUL_id = 301,
+                            Area_Id = 1900
+                        },
+                        new
+                        {
+                            GSUL_id = 302,
+                            Area_Id = 1200
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.Students", b =>
@@ -261,6 +453,22 @@ namespace ConsoleApp10.Migrations
                     b.HasIndex("Group_id");
 
                     b.ToTable("Students");
+
+                    b.HasData(
+                        new
+                        {
+                            AU_ID = 98,
+                            Birthday = new DateTime(1995, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Group_id = 1,
+                            Name = "Hans Hansen"
+                        },
+                        new
+                        {
+                            AU_ID = 99,
+                            Birthday = new DateTime(1996, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Group_id = 2,
+                            Name = "Frank Jepsersen"
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.Teacher", b =>
@@ -276,6 +484,20 @@ namespace ConsoleApp10.Migrations
                     b.HasKey("AU_ID");
 
                     b.ToTable("Teacher");
+
+                    b.HasData(
+                        new
+                        {
+                            AU_ID = 1,
+                            Birthday = new DateTime(1980, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Henrik Hansen"
+                        },
+                        new
+                        {
+                            AU_ID = 2,
+                            Birthday = new DateTime(1981, 5, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Poul Petersen"
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.TextBlock", b =>
@@ -291,6 +513,18 @@ namespace ConsoleApp10.Migrations
                     b.HasIndex("Area_Id");
 
                     b.ToTable("TextBlock");
+
+                    b.HasData(
+                        new
+                        {
+                            TextBlock_id = 201,
+                            Area_Id = 1900
+                        },
+                        new
+                        {
+                            TextBlock_id = 202,
+                            Area_Id = 1200
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.Video", b =>
@@ -306,6 +540,18 @@ namespace ConsoleApp10.Migrations
                     b.HasIndex("Area_Id");
 
                     b.ToTable("Video");
+
+                    b.HasData(
+                        new
+                        {
+                            Video_id = 101,
+                            Area_Id = 1200
+                        },
+                        new
+                        {
+                            Video_id = 102,
+                            Area_Id = 1900
+                        });
                 });
 
             modelBuilder.Entity("ConsoleApp10.Assignment", b =>
