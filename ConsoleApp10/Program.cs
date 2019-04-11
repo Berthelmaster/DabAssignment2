@@ -58,6 +58,9 @@ namespace ConsoleApp10
                 case "11":
                     Command.AddAssignment();
                     break;
+                case "12":
+                    Command.GradeAssignment();
+                    break;
 
 
             }

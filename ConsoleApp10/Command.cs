@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 
@@ -324,6 +325,36 @@ namespace ConsoleApp10
                     Console.WriteLine("Done");
                 }
             }
+        }
+
+        public static async void GradeAssignment()
+        {
+            
+            Console.WriteLine("Write Grade: ");
+            var assignedgrade = Convert.ToInt32(Console.ReadLine());
+
+            
+
+            using (var db = new AppDbContext())
+            {
+                var _grades = await db.Assignment.ToListAsync();
+                Console.WriteLine("All Assignment ids List: \n");
+                foreach (var student in _grades)
+                {
+                    Console.WriteLine("Assignment Id: {0} \n", student.Assignment_Id);
+                }
+
+                Console.WriteLine("Write Assignment Id: ");
+                var assignemntid = Convert.ToInt32(Console.ReadLine());
+
+                var assignment = db.Assignment.Single(a => a.Assignment_Id.Equals(assignemntid));
+
+                assignment.Grades = assignedgrade;
+
+                db.SaveChanges();
+                
+            }
+
         }
     }
 }
