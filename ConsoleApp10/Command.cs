@@ -346,12 +346,14 @@ namespace ConsoleApp10
 
                 Console.WriteLine("Write Assignment Id: ");
                 var assignemntid = Convert.ToInt32(Console.ReadLine());
-
-                var assignment = db.Assignment.Single(a => a.Assignment_Id.Equals(assignemntid));
-
-                assignment.Grades = assignedgrade;
-
+                Console.WriteLine("Here0");
+                var assignment = db.Assignment.FirstOrDefault(a => a.Assignment_Id == assignedgrade);
+                
+                //db.Assignment.Update(assignment);
+                Console.WriteLine("here2");
                 db.SaveChanges();
+
+                Console.WriteLine("Done");
                 
             }
 
