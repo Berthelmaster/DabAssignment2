@@ -7,6 +7,10 @@
 
   <ItemGroup>
     <Compile Remove="Migrations\20190408122033_InitialMigration.cs" />
+    <Compile Remove="Migrations\20190411095321_DataTest.cs" />
+    <Compile Remove="Migrations\20190411095750_TeacherAssistent_fikset.cs" />
+    <Compile Remove="Migrations\20190411104216_AssistantteacherTest.cs" />
+    <Compile Remove="Migrations\20190411105242_Assistent.cs" />
   </ItemGroup>
 
   <ItemGroup>

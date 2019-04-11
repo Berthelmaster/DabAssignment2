@@ -106,13 +106,13 @@ namespace ConsoleApp10
             modelBuilder.Entity<Assignment>()
                .HasOne(p => p.Teacher)
                .WithMany(b => b.Assignments)
-               .HasForeignKey(b => b.AU_ID);
+               .HasForeignKey(b2 => b2.AU_ID);
 
             //one AssistentTeacher many Assignment
             modelBuilder.Entity<Assignment>()
                .HasOne(p => p.AssistentTeacher)
                .WithMany(b => b.Assignments_)
-               .HasForeignKey(b => b.AU_Id_Assistant);
+               .HasForeignKey(b1 => b1.AU_Id_Assistant);
 
              // Multiple Content areas to one content
              modelBuilder.Entity<ContentArea>()
@@ -205,8 +205,8 @@ namespace ConsoleApp10
             modelBuilder.Entity<CourseEnrolledStudents>().HasData(new CourseEnrolledStudents { Course_id = 002, AU_id = 0099, EnrolledDate = new DateTime(2017, 9, 1), GraduationDate = new DateTime(2021, 2, 1) });
 
             //Assignment
-            modelBuilder.Entity<Assignment>().HasData(new Assignment { Assignment_Id = 1234, HandInDate = new DateTime(2019, 4, 12), Grades = 10, AU_ID = 001 });
-            modelBuilder.Entity<Assignment>().HasData(new Assignment { Assignment_Id = 1423, HandInDate = new DateTime(2019, 4, 12), Grades = 12, AU_ID = 002 });
+            modelBuilder.Entity<Assignment>().HasData(new Assignment { Assignment_Id = 1234, HandInDate = new DateTime(2019, 4, 12), Grades = 10, AU_ID = 0001, AU_Id_Assistant = 0003 });
+            modelBuilder.Entity<Assignment>().HasData(new Assignment { Assignment_Id = 1423, HandInDate = new DateTime(2019, 4, 12), Grades = 12, AU_ID = 0002, AU_Id_Assistant = 0004 });
 
             //GroupAssignment
             modelBuilder.Entity<GroupAssignment>().HasData(new GroupAssignment { GroupID = 001, Assignment_ID = 1234});
@@ -240,7 +240,7 @@ namespace ConsoleApp10
             modelBuilder.Entity<Audio>().HasData(new Audio { Audio_id = 401, Area_Id = 1900 });
             modelBuilder.Entity<Audio>().HasData(new Audio { Audio_id = 402, Area_Id = 1200 });
 
-            SaveChanges();
+            //SaveChanges();
 
 
         }
