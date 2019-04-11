@@ -327,31 +327,25 @@ namespace ConsoleApp10
             }
         }
 
-        public static async void GradeAssignment()
+        public static void GradeAssignment()
         {
             
-            Console.WriteLine("Write Grade: ");
-            var assignedgrade = Convert.ToInt32(Console.ReadLine());
+            
 
             
 
             using (var db = new AppDbContext())
             {
-                /*
-                var _grades = await db.Assignment.ToListAsync();
-                Console.WriteLine("All Assignment ids List: \n");
-                foreach (var student in _grades)
+
+                var assignmentiids = db.Assignment.ToList();
+
+                foreach (var assignment in assignmentiids)
                 {
-                    Console.WriteLine("Assignment Id: {0} \n", student.Assignment_Id);
+                    Console.WriteLine("Assignemnt Id: {0}", assignment.Assignment_Id);
+                    
                 }
-
-                Console.WriteLine("Write Assignment Id: ");
-                var assignemntid = Convert.ToInt32(Console.ReadLine());
-
-                var assignment = db.Assignment.Single(a => a.Assignment_Id.Equals(assignemntid));
-
-                assignment.Grades = assignedgrade;
-                */
+                
+                
                 
                 Console.WriteLine("indtast ID for opgaven");
                 var id = Convert.ToInt32(Console.ReadLine());
