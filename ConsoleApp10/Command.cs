@@ -30,7 +30,7 @@ namespace ConsoleApp10
                 Console.WriteLine("List of Courses: \n");
                 foreach (var course in Courses)
                 {
-                    Console.WriteLine("Course with Course-Id found: {0} \n", course.Course_id);
+                    Console.WriteLine("Course with Course-Id found: {0} with name: {1} \n", course.Course_id, course.Name);
                 }
             }
         }
