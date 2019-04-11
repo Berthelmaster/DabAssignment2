@@ -164,7 +164,10 @@ namespace ConsoleApp10
                  .WithMany(ct => ct.CourseTeachers)
                  .HasForeignKey(ct => ct.AU_id);
 
-            //Seeding Data in Database teachers
+
+
+            //Seeding Data in Database 
+            //Teachers
             modelBuilder.Entity<Teacher>().HasData(new Teacher { AU_ID = 0001, Name = "Henrik Hansen", Birthday = new DateTime(1980, 4, 21) });
             modelBuilder.Entity<Teacher>().HasData(new Teacher { AU_ID = 0002, Name = "Poul Petersen", Birthday = new DateTime(1981, 5, 22) });
 
@@ -188,6 +191,36 @@ namespace ConsoleApp10
             //Course Teachers
             modelBuilder.Entity<CourseTeacher>().HasData(new CourseTeacher { AU_id = 0001, Course_id = 001 });
             modelBuilder.Entity<CourseTeacher>().HasData(new CourseTeacher { AU_id = 0002, Course_id = 002 });
+
+            //Course Group
+            modelBuilder.Entity<CourseGroup>().HasData(new CourseGroup { Group_id = 001, Course_id = 001 });
+            modelBuilder.Entity<CourseGroup>().HasData(new CourseGroup { Group_id = 002, Course_id = 002 });
+
+            //Students
+            modelBuilder.Entity<Students>().HasData(new Students { AU_ID = 0098, Name = "Hans Hansen", Birthday = new DateTime(1995, 6, 10), Group_id = 001});
+            modelBuilder.Entity<Students>().HasData(new Students { AU_ID = 0099, Name = "Frank Jepsersen", Birthday = new DateTime(1996, 3, 17), Group_id = 002 });
+
+            //CoursesEnrolledStudents
+            modelBuilder.Entity<CourseEnrolledStudents>().HasData(new CourseEnrolledStudents { Course_id = 001, AU_id = 0098, EnrolledDate = new DateTime(2017, 9, 1), GraduationDate = new DateTime(2021, 2, 1) });
+            modelBuilder.Entity<CourseEnrolledStudents>().HasData(new CourseEnrolledStudents { Course_id = 002, AU_id = 0099, EnrolledDate = new DateTime(2017, 9, 1), GraduationDate = new DateTime(2021, 2, 1) });
+
+            //Assignment
+            modelBuilder.Entity<Assignment>().HasData(new Assignment { Assignment_Id = 1234, HandInDate = new DateTime(2019, 4, 12), Grades = 10, AU_ID = 001 });
+            modelBuilder.Entity<Assignment>().HasData(new Assignment { Assignment_Id = 1423, HandInDate = new DateTime(2019, 4, 12), Grades = 12, AU_ID = 002 });
+
+            //GroupAssignment
+            modelBuilder.Entity<GroupAssignment>().HasData(new GroupAssignment { GroupID = 001, Assignment_ID = 1234});
+            modelBuilder.Entity<GroupAssignment>().HasData(new GroupAssignment { GroupID = 002, Assignment_ID = 1423 });
+
+            //Content
+            modelBuilder.Entity<Content>().HasData(new Content { Content_Id = 1000});
+            modelBuilder.Entity<Content>().HasData(new Content { Content_Id = 1020});
+
+            //CourseContent
+            modelBuilder.Entity<CourseContent>().HasData(new CourseContent { Course_id = 001, Content_id = 1000 });
+            modelBuilder.Entity<CourseContent>().HasData(new CourseContent { Course_id = 002, Content_id = 1020 });
+
+            //
         }
 
 
