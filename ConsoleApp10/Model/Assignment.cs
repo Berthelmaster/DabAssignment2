@@ -14,9 +14,9 @@ namespace ConsoleApp10
         public int Grades { get; set; } 
 
         public Teacher Teacher { get; set; }
-        public int AU_ID { get; set; }
+        public int? AU_ID { get; set; }
         public AssistantTeacher AssistentTeacher{ get; set; }
-        public int AU_Id_Assistant { get; set; }
+        public int? AU_Id_Assistant { get; set; }
         public List<CourseAssignment> CourseAssignments { get; set; }
         public List<GroupAssignment> GroupAssignment { get; set; }
         

@@ -315,6 +315,7 @@ namespace ConsoleApp10
 
                 try
                 {
+                    Console.WriteLine("linje318");
                     db.SaveChanges();
                 }
                 finally

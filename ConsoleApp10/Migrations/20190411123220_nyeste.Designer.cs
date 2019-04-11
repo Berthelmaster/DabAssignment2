@@ -4,14 +4,16 @@ using ConsoleApp10;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ConsoleApp10.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190411123220_nyeste")]
+    partial class nyeste
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,9 +27,9 @@ namespace ConsoleApp10.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AU_ID");
+                    b.Property<int>("AU_ID");
 
-                    b.Property<int?>("AU_Id_Assistant");
+                    b.Property<int>("AU_Id_Assistant");
 
                     b.Property<int>("Grades");
 
@@ -556,11 +558,13 @@ namespace ConsoleApp10.Migrations
                 {
                     b.HasOne("ConsoleApp10.Teacher", "Teacher")
                         .WithMany("Assignments")
-                        .HasForeignKey("AU_ID");
+                        .HasForeignKey("AU_ID")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ConsoleApp10.AssistantTeacher", "AssistentTeacher")
                         .WithMany("Assignments_")
-                        .HasForeignKey("AU_Id_Assistant");
+                        .HasForeignKey("AU_Id_Assistant")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("ConsoleApp10.Audio", b =>
