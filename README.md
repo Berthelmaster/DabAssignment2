@@ -1,6 +1,6 @@
 # DabAssignment2
 Assignemnt2 Dab
-Gruppe 9: Ali, Florent, Thomas & Zabih
+Gruppe 9: Ali, Florent 201409781, Thomas 201710202 & Zabih 201704545
 
 I følgende aflevering er der blevet taget udgangspunkt i opgave 1 hvori gruppen skulle bruge tidligere blackboard database fra aflevering 1.
 Dette skulle omskrives til "entity frameworks cores code-first technique"
