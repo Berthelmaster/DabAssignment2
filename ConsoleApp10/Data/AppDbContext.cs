@@ -12,7 +12,6 @@ namespace ConsoleApp10
             builder.UseSqlServer(@"Server=Localhost;Database=DabAssignmentV4;Integrated Security=True");
         }
 
-
         //Dbsets for when we have to use the Data in any way. Also this will be used for seeding data into our Database
         // These also hold the shadow classes, I'm not sure, should these also be added?
         public DbSet<Assignment> Assignment { get; set; }
@@ -34,17 +33,14 @@ namespace ConsoleApp10
         public DbSet<CourseEnrolledStudents> CourseEnrolledStudents { get; set; }
         public DbSet<CourseTeacher> CourseTeacher { get; set; }
         public DbSet<GroupAssignment> GroupAssignment { get; set; }
-
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             // Many students have one Group
             modelBuilder.Entity<Students>()
                 .HasOne(ba => ba.Group)
                 .WithMany(b => b._Students)
                 .HasForeignKey(bc => bc.Group_id);
-                //.IsRequired();
 
             // Many students have Many Courses through CourseEnrolledmentStudent
             modelBuilder.Entity<CourseEnrolledStudents>()
@@ -152,6 +148,7 @@ namespace ConsoleApp10
                 .HasOne(a => a.Assignment)
                 .WithMany(a => a.GroupAssignment)
                 .HasForeignKey(ga => ga.Assignment_ID);
+
             //Many Courses have many teachers
             modelBuilder.Entity<CourseTeacher>()
                  .HasKey(ct => new { ct.Course_id, ct.AU_id});
@@ -163,8 +160,6 @@ namespace ConsoleApp10
                  .HasOne(t => t.Teacher)
                  .WithMany(ct => ct.CourseTeachers)
                  .HasForeignKey(ct => ct.AU_id);
-
-
 
             //Seeding Data in Database 
             //Teachers
@@ -180,7 +175,6 @@ namespace ConsoleApp10
             modelBuilder.Entity<Group>().HasData(new Group { GroupID = 002, GroupSize = 4 });
 
             //Calendar
-
             modelBuilder.Entity<Calendar>().HasData(new Calendar { Calendar_id = 001, CourseLecture = new DateTime(2019, 4, 8), Handin = new DateTime(2019, 4, 12), Deadlines = new DateTime(2019, 4, 15) });
             modelBuilder.Entity<Calendar>().HasData(new Calendar { Calendar_id = 002, CourseLecture = new DateTime(2019, 5, 9), Handin = new DateTime(2019, 5, 20), Deadlines = new DateTime(2019, 5, 20) });
 
@@ -243,11 +237,7 @@ namespace ConsoleApp10
             modelBuilder.Entity<Audio>().HasData(new Audio { Audio_id = 401, Area_Id = 1900 });
             modelBuilder.Entity<Audio>().HasData(new Audio { Audio_id = 402, Area_Id = 1200 });
 
-            //SaveChanges();
-
-
         }
-
 
     }
 }
