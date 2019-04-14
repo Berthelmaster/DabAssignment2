@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace ConsoleApp10
 {
@@ -6,9 +7,21 @@ namespace ConsoleApp10
     {
         static void Main(string[] args)
         {
+            int counter = 0;
+
             do
             {
+                counter++;
+                
                 System.Threading.Thread.Sleep(1000);
+
+                if (counter > 1)
+                {
+                    Console.WriteLine("Found the following results, returning to menu \n");
+                }
+
+                Thread.Sleep(500);
+                
                 Console.WriteLine("Hello! You have the following Options: \n" +
                               "Press 1 to List all students \n"
                               + "Press 2 to list all Courses \n"
@@ -20,18 +33,18 @@ namespace ConsoleApp10
                               + "Press 8 to Add Course\n"
                               + "Press 9 to Enroll a new student in Course \n"
                               + "Press 10 to Add assignemnt \n"
-                              + "Press 11 to Grade an already existing assignment");
+                              + "Press 11 to Grade an already existing assignment \n");
+                Console.Write("Enter Number: ");
                 var choice = Console.ReadLine();
+                Console.WriteLine("");
 
                 switch (choice)
                 {
                     case "1":
                         Command.ListStudents();
-                        Console.WriteLine("What do you want to do next? \n");
                         break;
                     case "2":
                         Command.ListCourses();
-                        Console.WriteLine("What do you want to do next? \n");
                         break;
                     case "3":
                         Console.WriteLine("Write AU_Id: ");

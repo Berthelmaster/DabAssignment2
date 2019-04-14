@@ -111,24 +111,7 @@ namespace ConsoleApp10
                     Console.WriteLine("Graded by: {0} \n", (tag.Assignment.AU_ID != null ? tag.Assignment.AU_ID: tag.Assignment.AU_Id_Assistant));
 
                 }
-                /*
-                var studentsAssignments = await db.CourseEnrolledStudents.Where(c => c.Course_id == courseId && c.AU_id == studentId)
-                    .Include(a => a._Course.CourseTeachers)
-                    .ToListAsync();
-                Console.WriteLine("List of content to course: \n");
-                foreach (var student in studentsAssignments)
-                {
-                    
-                    
-                    foreach (var assignment in student._Course.CourseAssignments)
-                    {
-                        Console.WriteLine("Assignment id: {0}", assignment.Assignment.Assignment_Id);
-                        Console.WriteLine("Grade: {0}", assignment.Assignment.Grades);
-                        Console.WriteLine("Graded by: {0} \n", assignment.Assignment.Teacher.Name);
-                    }
-                    
-                }
-                */
+                
             }
         }
 
@@ -177,7 +160,6 @@ namespace ConsoleApp10
                 finally
                 {
                     db.Database.CloseConnection();
-                    Console.WriteLine("Done");
                 }
 
 
@@ -347,14 +329,12 @@ namespace ConsoleApp10
 
                 try
                 {
-                    Console.WriteLine("linje318");
                     db.SaveChanges();
                 }
                 finally
                 {
                     db.Database.CloseConnection();
-                    Console.WriteLine("Done");
-                }
+                    }
             }
         }
 
